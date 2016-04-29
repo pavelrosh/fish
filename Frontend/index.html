@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forecast</title>
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="styles/main.less"/>
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+<body>
+<!--HEADER-->
+<div class="header">
+    <div class="logo">Fish</div>
+    <span class="current_city">Київ</span>
+
+    <div class="dropdown menu1">
+        <button class="btn btn-default dropdown-toggle menu1" type="button" id="dropdownMenu" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+            МЕНЮ
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
+</div>
+<!--HEADER-->
+
+<div class="centre container-fluid">
+    <div class="row">
+        <div class="left_panel col-md-4 col-sm-4 col-xs-12">
+            <!--WEATHER-->
+            <div class="weather">
+                <div id="SinoptikInformer" style="width:100%;" class="SinoptikInformer type5">
+                    <div class="siHeader">
+                        <div class="siLh">
+                            <div class="siMh"><a onmousedown="siClickCount();" href="https://ua.sinoptik.ua/"
+                                                 target="_blank">Погода</a><a onmousedown="siClickCount();"
+                                                                              class="siLogo"
+                                                                              href="https://ua.sinoptik.ua/"
+                                                                              target="_blank"> </a> <span
+                                    id="siHeader"></span></div>
+                        </div>
+                    </div>
+                    <div class="siBody">
+                        <div class="siCity">
+                            <div class="siCityName"><a onmousedown="siClickCount();"
+                                                       href="https://ua.sinoptik.ua/погода-київ" target="_blank">Погода
+                                у
+                                <span>Києві</span></a></div>
+                            <div id="siCont0" class="siBodyContent">
+                                <div class="siLeft">
+                                    <div class="siTerm"></div>
+                                    <div class="siT" id="siT0"></div>
+                                    <div id="weatherIco0"></div>
+                                </div>
+                                <div class="siInf"><p>вологість: <span id="vl0"></span></p>
+
+                                    <p>тиск: <span id="dav0"></span></p>
+
+                                    <p>вітер: <span id="wind0"></span></p></div>
+                            </div>
+                        </div>
+                        <div class="siLinks"><span><a onmousedown="siClickCount();"
+                                                      href="https://ua.sinoptik.ua/погода-бориспіль" target="_blank">Погода
+                            у Борисполі</a>&nbsp;</span><span><a onmousedown="siClickCount();"
+                                                                 href="https://ua.sinoptik.ua/погода-івано-франківськ"
+                                                                 target="_blank">Погода в
+                            Івано-Франківську</a>&nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="siFooter">
+                        <div class="siLf">
+                            <div class="siMf"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--WEATHER-->
+
+            <!--FISH CHOICE-->
+            <div class="fish ">
+                <div class="dropdown choice">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <a href="#"><span class="text">Щука</span><img src="styles/images/pike1.png"
+                                                                           class="pike"></a>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#"><span class="text">Красноперка</span><img src="styles/images/krasnoper.png"
+                                                                                  class="fish_images"></a></li>
+                        <li><a href="#"><span class="text">Карась</span><img src="styles/images/karas.png"
+                                                                             id="karas"></a></li>
+                        <li><a href="#"><span class="text">Окунь</span><img src="styles/images/perch.png"
+                                                                            class="perch"></a></li>
+                        <li><a href="#"><span class="text">Щука</span><img src="styles/images/pike1.png"
+                                                                            class="pike"></a></li>
+                        <li><a href="#"><span class="text">Плітка</span><img src="styles/images/plotva.png" id="plitka"></a>
+                        </li>
+                        <li><a href="#"><span class="text">Короп</span><img src="styles/images/korop.png"
+                                                                            id="korop"></a></li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--FISH CHOICE-->
+        </div>
+        <!--GOOGLE MAPS,INFO PANELS-->
+        <div class="center_panel col-md-8 col-sm-8 col-xs-12">
+            <div id="googleMap"></div>
+
+
+            <!--INFO PANELS-->
+            <div class="main_info table_act">
+
+                <div class="main_activity">Прогноз активності <strong> Щуки</strong><strong> в м. Київ</strong></div>
+                <div class="destination">Україна, Київська область</div>
+
+                <ul class="nav nav-pills day_select">
+                    <li class="active"><a href="#"id="p1">На сьогодні</a></li>
+                    <li><a href="#"id="p2">На завтра</a></li>
+                    <li><a href="#"id="p3">На 3 дні</a></li>
+                </ul>
+                <div class="activity ">
+                    <table class="table table-bordered table_style">
+                        <thead>
+                        <tr class="colortext ">
+                            <th width="15%"class="text0">Дата</th>
+                            <th width="15%"class="text0">Хмарність</th>
+                            <th width="15%"class="text0">Тиск</th>
+                            <th width="15%"class="text0">Вітер</th>
+                            <th width="15%"class="text0">Фаза місяця</th>
+                            <th width="25%"class="text0">Загальна активність</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="colortext table_act">
+                            <td class="wday vertical">
+                                <p><span class="date ">29.04</span></p></td>
+                            <td class="wclouds">
+                                <p class="clouds_block"><img src="styles/images/sun_cl.png" class="weather">
+                                    <span class="clouds clouds0 ">Ясно</span>
+                                    <span class="clouds clouds1 " style="display:none;">Хмарно з проясненнями</span>
+                                    <span class="clouds clouds2 " style="display:none;">Хмарно</span>
+                                    <span class="clouds clouds3 " style="display:none;">Пасмурно</span>
+                                    <span class="clouds clouds4 " style="display:none;">Легкий дощ</span>
+                                    <span class="clouds clouds5 " style="display:none;">Дощ</span>
+                                    <span class="clouds clouds6 " style="display:none;">Гроза</span>
+                                    <span class="clouds clouds7 " style="display:none;">Град</span>
+                                    <span class="clouds clouds8 " style="display:none;">Дощ зі снігом</span>
+                                    <span class="clouds clouds9 " style="display:none;">Сніг</span>
+                                    <span class="clouds clouds10 " style="display:none;">Хуртелиця</span>
+                                </p>
+                            </td>
+                            <td class="wpreasure vertical">
+                                <p class="preasure ">749&nbsp;мм.<br> рт. ст.</p>
+                            </td>
+                            <td class="wwind vertical">
+                                <p class="wind_direction"><img src="styles/images/wind.png" class="weather">
+                                    <span class="wind_direction0 " style="display:none;">Пн</span>
+                                    <span class="wind_direction1 " style="">Пн</span>
+                                    <span class="wind_direction2 " style="display:none;">З</span>
+                                    <span class="wind_direction3 " style="display:none;">ПдЗ</span>
+                                    <span class="wind_direction4 " style="display:none;">Пд</span>
+                                    <span class="wind_direction5 " style="display:none;">ПдС</span>
+                                    <span class="wind_direction6 " style="display:none;">С</span>
+                                    <span class="wind_direction7 " style="display:none;">ПнС</span>
+                                    <span class="wind_direction8 " style="display:none;">Ш</span>
+                                </p>
+                            </td>
+
+                            <td class="wmoon vertical"><img src="styles/images/moon.png" class="weather">
+
+                                <div class="moon_phase vertical ">22д</div>
+                            </td>
+                            <td class="wresult vertical">
+                                <div><span class="result ">6/10</span></div>
+                            </td>
+
+                        </tr>
+                        <tr class="colortext table_act">
+                            <td class="wday vertical">
+                                <p><span class="date ">30.04</span></p></td>
+                            <td class="wclouds">
+                                <p class="clouds_block"><img src="styles/images/sun.png" class="weather">
+                                    <span class="clouds clouds0 ">Ясно</span>
+                                    <span class="clouds clouds1 " style="display:none;">Хмарно з проясненнями</span>
+                                    <span class="clouds clouds2 " style="display:none;">Хмарно</span>
+                                    <span class="clouds clouds3 " style="display:none;">Пасмурно</span>
+                                    <span class="clouds clouds4 " style="display:none;">Легкий дощ</span>
+                                    <span class="clouds clouds5 " style="display:none;">Дощ</span>
+                                    <span class="clouds clouds6 " style="display:none;">Гроза</span>
+                                    <span class="clouds clouds7 " style="display:none;">Град</span>
+                                    <span class="clouds clouds8 " style="display:none;">Дощ зі снігом</span>
+                                    <span class="clouds clouds9 " style="display:none;">Сніг</span>
+                                    <span class="clouds clouds10 " style="display:none;">Хуртелиця</span>
+                                </p>
+                            </td>
+                            <td class="wpreasure vertical">
+                                <p class="preasure ">749&nbsp;мм.<br> рт. ст.</p>
+                            </td>
+                            <td class="wwind vertical">
+                                <p class="wind_direction"><img src="styles/images/wind.png" class="weather">
+                                    <span class="wind_direction0 " style="display:none;">Пн</span>
+                                    <span class="wind_direction1 " style="">Пн</span>
+                                    <span class="wind_direction2 " style="display:none;">З</span>
+                                    <span class="wind_direction3 " style="display:none;">ПдЗ</span>
+                                    <span class="wind_direction4 " style="display:none;">Пд</span>
+                                    <span class="wind_direction5 " style="display:none;">ПдС</span>
+                                    <span class="wind_direction6 " style="display:none;">С</span>
+                                    <span class="wind_direction7 " style="display:none;">ПнС</span>
+                                    <span class="wind_direction8 " style="display:none;">Ш</span>
+                                </p>
+                            </td>
+
+                            <td class="wmoon vertical"><img src="styles/images/moon.png" class="weather">
+
+                                <div class="moon_phase vertical ">22д</div>
+                            </td>
+                            <td class="wresult vertical">
+                                <div><span class="result ">6/10</span></div>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!--GOOGLE MAPS,INFO PANELS-->
+
+    </div>
+</div>
+<script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=2&amp;cities=303010783&amp;lang=ua"></script>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDWKJAkFIxgaUWF56CdlyV_VGvg2ZTradg"></script>
+
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="styles/js/main.js"></script>
+<!--</body>-->
+</body>
+</html>
